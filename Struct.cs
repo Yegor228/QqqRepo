@@ -8,19 +8,14 @@ namespace Qqq
 {
     internal class Struct
     {
-        static void TestStruct()
+        public static void TestStruct()
         {
             var myObj = new MyClass();
-            var test = myObj.GetTest;
-            Console.WriteLine(myObj.GetTest.Value);
 
-            test.Value = 10;
-            myObj.GetTest = test;
-            Console.WriteLine(myObj.GetTest.Value);
+            myObj.GetTest().Value = 20;
 
-            test.Value = 50;
-            myObj.GetTest = test;
-            Console.WriteLine(myObj.GetTest.Value);
+            Console.WriteLine(myObj.GetTest().Value);
+            
         }
     }
 
@@ -32,13 +27,9 @@ namespace Qqq
 
     public class MyClass
     {
-        private Test _test = new() { Value = 1 };
+        private Test _test = new () { Value = 1 };
 
-        public Test GetTest
-        {
-            get { return _test; }
-            set { _test = value; }
-        }
+        public ref Test GetTest() => ref _test;
 
     }
 }

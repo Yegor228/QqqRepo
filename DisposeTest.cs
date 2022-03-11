@@ -8,7 +8,14 @@ namespace Qqq
 {
     internal class DisposeTest : IDisposable
     {
+        public static void TestTestTestDispose()
+        {
+            DisposeTest dt = new DisposeTest();
 
+            dt.SomeMethod();
+
+            dt.Dispose();
+        }
         public void SomeMethod()
         {
             Action act = () => Console.WriteLine("QQQQQQQQ");
