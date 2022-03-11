@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
@@ -10,10 +11,42 @@ namespace Qqq
        
         static void Main(string[] args)
         {
-            CheckList();
+            CheckDict();
+            //CheckList();
             //CheckPrint();
             //ChillIterators.TestIterator();
             //ThrowParamsTest.TestThrowFinal();
+        }
+
+
+        public struct TestData
+        {
+            public string Data { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                if(Data != null && obj is string s)
+                    return Data.Equals(s);
+                return false;
+            }
+            public override int GetHashCode() => Data.Length;
+
+        }
+
+        static void CheckDict()
+        {
+            Dictionary<TestData, int> d = new Dictionary<TestData, int>();
+            d.Add(new TestData { Data = "aaaa" }, 1);
+            d.Add(new TestData { Data = "bbbb" }, 2);
+            d.Add(new TestData { Data = "cccc" }, 3);
+            foreach (var a in d)
+                Console.WriteLine($"{a.Key.Data} - {a.Value} - HashDode - {a.Key.GetHashCode()}");
+            Console.WriteLine(d.Keys.Count);
+            Console.WriteLine("---------------------------------");
+            d.Add(new TestData { Data = "dddd" }, 4);
+            foreach (var a in d)
+                Console.WriteLine($"{a.Key.Data} - {a.Value} - HashDode - {a.Key.GetHashCode()}");
+            Console.WriteLine(d.Keys.Count);
         }
 
 
