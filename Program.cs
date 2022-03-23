@@ -11,11 +11,24 @@ namespace Qqq
        
         static void Main(string[] args)
         {
-            CheckDict();
+            //OverrideEqGetHash.Test();
+            ForeachCheck();
+
+
+            //CheckDict();
             //CheckList();
             //CheckPrint();
             //ChillIterators.TestIterator();
             //ThrowParamsTest.TestThrowFinal();
+        }
+
+        public static void ForeachCheck()
+        {
+            var list = new List<int>() { 1 ,2 ,3};
+            foreach(var item in list.ToList())
+                list.Add(0);
+            foreach (var a in list)
+                Console.WriteLine(a);
         }
 
 
