@@ -11,8 +11,13 @@ namespace Qqq
        
         static void Main(string[] args)
         {
-            //OverrideEqGetHash.Test();
+            OverrideEqGetHash.Test();
             ForeachCheck();
+            CollectionsTest.TestColl();
+            Lists list = new Lists();
+            list.JoinLists();
+
+
 
 
             //CheckDict();
